@@ -217,11 +217,11 @@ else
     print_status "Installing fonts..."
     install_packages "${FONTS[@]}"
     
-    # Some programs just run better as flatpaks. Like zen browser/mission center
-    if [[ -f "install-flatpaks.sh" ]]; then
-        print_status "Installing flatpaks (like zen browser and mission center)"
-        source install-flatpaks.sh
-    fi
+    # Stow dotfiles
+    #if [[ -f "dotfiles.sh" ]]; then
+    #    print_status "Stow all my dotfiles"
+    #    source dotfiles.sh
+    #fi
 fi
 
 print_success "Setup complete! You may want to reboot your system."

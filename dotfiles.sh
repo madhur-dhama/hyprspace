@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e  # Exit on any error
-
 ORIGINAL_DIR=$(pwd)
 REPO_URL="https://github.com/madhur-dhama/dotfiles"
 REPO_NAME="dotfiles"
