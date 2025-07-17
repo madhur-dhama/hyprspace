@@ -12,15 +12,14 @@ SYSTEM_UTILS=(
   wget
   curl
   timeshift
-  ulauncher
   kdeconnect
+  flatpak
 )
 
 # Development tools
 DEV_TOOLS=(
   yazi
   bat
-  zsh
   neovim
   starship
   tmux
@@ -30,14 +29,7 @@ DEV_TOOLS=(
 
 # System maintenance
 MAINTENANCE=(
-  gnome-disk-utility
   os-prober
-)
-
-# Desktop environment
-DESKTOP=(
-  gnome
-  gnome-tweaks
 )
 
 # Media packages
@@ -51,10 +43,4 @@ FONTS=(
   #noto-fonts
   #noto-fonts-emoji
   ttf-jetbrains-mono-nerd
-)
-
-# Services to enable
-SERVICES=(
-  gdm.service
-  NetworkManager.service
 )
