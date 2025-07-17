@@ -1,0 +1,60 @@
+# System utilities
+SYSTEM_UTILS=(
+  htop
+  btop
+  lazygit
+  lazydocker
+  stow
+  fastfetch
+  fzf
+  zip
+  unzip
+  wget
+  curl
+  timeshift
+  ulauncher
+  kdeconnect
+)
+
+# Development tools
+DEV_TOOLS=(
+  yazi
+  bat
+  zsh
+  neovim
+  starship
+  tmux
+  kitty
+  git
+)
+
+# System maintenance
+MAINTENANCE=(
+  gnome-disk-utility
+  os-prober
+)
+
+# Desktop environment
+DESKTOP=(
+  gnome
+  gnome-tweaks
+)
+
+# Media packages
+MEDIA=(
+  vlc
+  gimp
+)
+
+# Fonts
+FONTS=(
+  #noto-fonts
+  #noto-fonts-emoji
+  ttf-jetbrains-mono-nerd
+)
+
+# Services to enable
+SERVICES=(
+  gdm.service
+  NetworkManager.service
+)
