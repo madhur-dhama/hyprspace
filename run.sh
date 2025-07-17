@@ -4,18 +4,28 @@
 print_logo() {
     cat << "EOF"
 
-   ▄████████    ▄████████  ▄████████    ▄█    █▄     ▄█  ███▄▄▄▄    ▄██████▄    ▄▄▄▄███▄▄▄▄      ▄████████ 
-  ███    ███   ███    ███ ███    ███   ███    ███   ███  ███▀▀▀██▄ ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███ 
-  ███    ███   ███    ███ ███    █▀    ███    ███   ███▌ ███   ███ ███    ███ ███   ███   ███   ███    █▀  
-  ███    ███  ▄███▄▄▄▄██▀ ███         ▄███▄▄▄▄███▄▄ ███▌ ███   ███ ███    ███ ███   ███   ███  ▄███▄▄▄     
-▀███████████ ▀▀███▀▀▀▀▀   ███        ▀▀███▀▀▀▀███▀  ███▌ ███   ███ ███    ███ ███   ███   ███ ▀▀███▀▀▀     
-  ███    ███ ▀███████████ ███    █▄    ███    ███   ███  ███   ███ ███    ███ ███   ███   ███   ███    █▄  
-  ███    ███   ███    ███ ███    ███   ███    ███   ███  ███   ███ ███    ███ ███   ███   ███   ███    ███ 
-  ███    █▀    ███    ███ ████████▀    ███    █▀    █▀    ▀█   █▀   ▀██████▀   ▀█   ███   █▀    ██████████ 
-               ███    ███                                                                                                                                                       
 
-                                         Arch Linux System Crafting Tool      
-                                               by: madhur dhama                        
+██   ██ ██    ██ ██████  ██████  ███████ ██████   █████   ██████ ███████ 
+██   ██  ██  ██  ██   ██ ██   ██ ██      ██   ██ ██   ██ ██      ██      
+███████   ████   ██████  ██████  ███████ ██████  ███████ ██      █████   
+██   ██    ██    ██      ██   ██      ██ ██      ██   ██ ██      ██      
+██   ██    ██    ██      ██   ██ ███████ ██      ██   ██  ██████ ███████ 
+
+
+
+   ▄█    █▄    ▄██   ▄      ▄███████▄    ▄████████    ▄████████    ▄███████▄    ▄████████  ▄████████    ▄████████ 
+  ███    ███   ███   ██▄   ███    ███   ███    ███   ███    ███   ███    ███   ███    ███ ███    ███   ███    ███ 
+  ███    ███   ███▄▄▄███   ███    ███   ███    ███   ███    █▀    ███    ███   ███    ███ ███    █▀    ███    █▀  
+ ▄███▄▄▄▄███▄▄ ▀▀▀▀▀▀███   ███    ███  ▄███▄▄▄▄██▀   ███          ███    ███   ███    ███ ███         ▄███▄▄▄     
+▀▀███▀▀▀▀███▀  ▄██   ███ ▀█████████▀  ▀▀███▀▀▀▀▀   ▀███████████ ▀█████████▀  ▀███████████ ███        ▀▀███▀▀▀     
+  ███    ███   ███   ███   ███        ▀███████████          ███   ███          ███    ███ ███    █▄    ███    █▄  
+  ███    ███   ███   ███   ███          ███    ███    ▄█    ███   ███          ███    ███ ███    ███   ███    ███ 
+  ███    █▀     ▀█████▀   ▄████▀        ███    ███  ▄████████▀   ▄████▀        ███    █▀  ████████▀    ██████████ 
+                                        ███    ███                                                                
+                                                                          
+
+                         Hyprland Wayland Environment Setup
+                                by: madhur dhama                        
 
 
 EOF
@@ -214,41 +224,11 @@ else
     print_status "Installing system maintenance tools..."
     install_packages "${MAINTENANCE[@]}"
     
-    #print_status "Installing desktop environment..."
-    #install_packages "${DESKTOP[@]}"
-    
     print_status "Installing media packages..."
     install_packages "${MEDIA[@]}"
     
     print_status "Installing fonts..."
     install_packages "${FONTS[@]}"
-    
-    # Enable services
-    #print_status "Configuring services..."
-    #for service in "${SERVICES[@]}"; do
-    #    if ! systemctl is-enabled "$service" &> /dev/null; then
-    #        print_status "Enabling $service..."
-    #        sudo systemctl enable "$service"
-    #    else
-    #        print_success "$service is already enabled"
-    #    fi
-    #done
-    
-    # Install gnome specific things to make it like a tiling WM
-    if [[ -f "gnome/gnome-extensions.sh" ]]; then
-        print_status "Installing Gnome extensions..."
-        source gnome/gnome-extensions.sh
-    fi
-    
-    if [[ -f "gnome/gnome-binds.sh" ]]; then
-        print_status "Setting Gnome keybinds..."
-        source gnome/gnome-binds.sh
-    fi
-    
-    if [[ -f "gnome/gnome-settings.sh" ]]; then
-        print_status "Configuring Gnome..."
-        source gnome/gnome-settings.sh
-    fi
     
     # Some programs just run better as flatpaks. Like zen browser/mission center
     if [[ -f "install-flatpaks.sh" ]]; then
