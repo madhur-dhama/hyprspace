@@ -7,40 +7,40 @@ An Arch Linux System Tool that automates the setup and configuration of an Arch 
 - 🔄 Automated system updates
 - 📦 Package installation by categories:
   - System utilities
-    - Development tools
-      - System maintenance tools
-        - Desktop environment
-          - Office applications
-            - Media packages
-              - Fonts
-              - 🛠️ Automatic installation of paru AUR helper
-              - 🖥️ GNOME desktop environment setup with tiling-like features
-              - 🎮 Flatpak integration for specific applications
-              - ⚙️ Automatic service configuration
-              - 🔧 GNOME extensions and hotkey configuration
+  - Development tools
+  - System maintenance tools
+  - Desktop environment
+  - Office applications
+  - Media packages
+  - Fonts
+- 🛠️ Automatic installation of paru AUR helper
+- 🖥️ GNOME desktop environment setup with tiling-like features
+- 🎮 Flatpak integration for specific applications
+- ⚙️ Automatic service configuration
+- 🔧 GNOME extensions and hotkey configuration
 
-              ## Prerequisites
+## Prerequisites
 
-              - A fresh Arch Linux installation
-              - Internet connection
-              - sudo privileges
+- A fresh Arch Linux installation
+- Internet connection
+- sudo privileges
 
-              ## Installation
+## Installation
 
-              1. Clone this repository:
+1. Clone this repository:
 
-              ```bash
-              git clone https://github.com/madhur-dhama/hyprspace.git
-              ```
+```bash
+git clone https://github.com/madhur-dhama/hyprspace.git
+```
 
-              2. cd hyprspace and run the setup script:
+2. cd hyprspace and run the setup script:
 
-              ```bash
-              ./run.sh
-              ```
+```bash
+./run.sh
+```
 
-              3. Follow the prompts to select the packages you want to install.
+3. Follow the prompts to select the packages you want to install.
 
-              4. The script will handle the rest of the setup process.
+4. The script will handle the rest of the setup process.
 
-              5. After the setup is complete, you can reboot your system to see the changes.
+5. After the setup is complete, you can reboot your system to see the changes.
