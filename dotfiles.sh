@@ -34,6 +34,7 @@ if [ $? -eq 0 ]; then
   rm -rf "$HOME/.config/nvim"
   rm -rf "$HOME/.config/hypr"
   rm -rf "$HOME/.config/ghostty"
+  rm -rf "$HOME/.config/waybar"
 
   stow */
 
