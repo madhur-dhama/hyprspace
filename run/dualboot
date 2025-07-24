@@ -3,35 +3,27 @@
 set -e
 
 # Check if running as root
-if [[ $EUID -ne 0 ]]; then
-  echo "Please run this script as root (e.g., sudo)."
-  exit 1
-fi
+[[ $EUID -ne 0 ]] && echo "Run as root" && exit 1
 
 # Install os-prober if not installed
-if ! pacman -Qs os-prober > /dev/null; then
+if ! pacman -Qs os-prober &>/dev/null; then
   echo "Installing os-prober..."
   pacman -S --noconfirm os-prober
-else
-  echo "os-prober is already installed."
 fi
 
-# Enable os-prober in /etc/default/grub if not already enabled
+# Backup grub config
+cp /etc/default/grub /etc/default/grub.bak 2>/dev/null || true
+
+# Enable os-prober
 GRUB_CONFIG="/etc/default/grub"
-if grep -q '^GRUB_DISABLE_OS_PROBER=false' "$GRUB_CONFIG"; then
-  echo "os-prober is already enabled in $GRUB_CONFIG."
-else
-  echo "Enabling os-prober in $GRUB_CONFIG..."
-  # If GRUB_DISABLE_OS_PROBER line exists, replace it; else append
-  if grep -q '^GRUB_DISABLE_OS_PROBER=' "$GRUB_CONFIG"; then
-    sed -i 's/^GRUB_DISABLE_OS_PROBER=.*/GRUB_DISABLE_OS_PROBER=false/' "$GRUB_CONFIG"
-  else
-    echo 'GRUB_DISABLE_OS_PROBER=false' >> "$GRUB_CONFIG"
-  fi
+if ! grep -q '^GRUB_DISABLE_OS_PROBER=false' "$GRUB_CONFIG"; then
+  echo "Enabling os-prober..."
+  sed -i '/^#*GRUB_DISABLE_OS_PROBER=/d' "$GRUB_CONFIG"
+  echo 'GRUB_DISABLE_OS_PROBER=false' >> "$GRUB_CONFIG"
 fi
 
-# Generate grub config file
-echo "Generating GRUB config..."
+# Generate grub config
+echo "Updating GRUB..."
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo "Done! Reboot and check if Windows entry appears in GRUB."
+echo "Done! Reboot to see all OS entries."
