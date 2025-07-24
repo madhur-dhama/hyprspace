@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -e
+
+# Check if running as root
+if [[ $EUID -ne 0 ]]; then
+  echo "Please run this script as root (e.g., sudo)."
+  exit 1
+fi
+
+# Install os-prober if not installed
+if ! pacman -Qs os-prober > /dev/null; then
+  echo "Installing os-prober..."
+  pacman -S --noconfirm os-prober
+else
+  echo "os-prober is already installed."
+fi
+
+# Enable os-prober in /etc/default/grub if not already enabled
+GRUB_CONFIG="/etc/default/grub"
+if grep -q '^GRUB_DISABLE_OS_PROBER=false' "$GRUB_CONFIG"; then
+  echo "os-prober is already enabled in $GRUB_CONFIG."
+else
+  echo "Enabling os-prober in $GRUB_CONFIG..."
+  # If GRUB_DISABLE_OS_PROBER line exists, replace it; else append
+  if grep -q '^GRUB_DISABLE_OS_PROBER=' "$GRUB_CONFIG"; then
+    sed -i 's/^GRUB_DISABLE_OS_PROBER=.*/GRUB_DISABLE_OS_PROBER=false/' "$GRUB_CONFIG"
+  else
+    echo 'GRUB_DISABLE_OS_PROBER=false' >> "$GRUB_CONFIG"
+  fi
+fi
+
+# Generate grub config file
+echo "Generating GRUB config..."
+grub-mkconfig -o /boot/grub/grub.cfg
+
+echo "Done! Reboot and check if Windows entry appears in GRUB."
