@@ -11,23 +11,23 @@ git clone https://github.com/madhur-dhama/hyprspace.git /tmp/grub --quiet
 echo "Available themes:"
 themes=($(ls /tmp/grub/grub-themes/))
 for i in "${!themes[@]}"; do
-    echo "$((i+1))) ${themes[i]}"
+  echo "$((i + 1))) ${themes[i]}"
 done
 
 # Select theme
 read -p "Select theme (1-${#themes[@]}): " choice
-selected="${themes[$((choice-1))]}"
+selected="${themes[$((choice - 1))]}"
 
 # Backup grub config
 cp /etc/default/grub /etc/default/grub.bak
 
 # Install theme
-mkdir -p /usr/share/grub/themes
-cp -r /tmp/grub/grub-themes/"$selected" /usr/share/grub/themes/
+mkdir -p /boot/grub/themes
+cp -r /tmp/grub/grub-themes/"$selected" /boot/grub/themes
 
 # Update grub config
 sed -i '/^#*GRUB_THEME=/d' /etc/default/grub
-echo "GRUB_THEME=\"/usr/share/grub/themes/$selected/theme.txt\"" >> /etc/default/grub
+echo "GRUB_THEME=\"/boot/grub/themes/$selected/theme.txt\"" >>/etc/default/grub
 
 # Update grub
 grub-mkconfig -o /boot/grub/grub.cfg
