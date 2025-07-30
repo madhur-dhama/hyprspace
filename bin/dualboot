@@ -22,10 +22,6 @@ if ! grep -q '^GRUB_DISABLE_OS_PROBER=false' "$GRUB_CONFIG"; then
   echo 'GRUB_DISABLE_OS_PROBER=false' >> "$GRUB_CONFIG"
 fi
 
-# Run os-prober to detect other OS
-echo "Running os-prober..."
-os-prober
-
 # Generate grub config
 echo "Updating GRUB..."
 grub-mkconfig -o /boot/grub/grub.cfg
