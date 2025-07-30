@@ -15,13 +15,16 @@ fi
 cp /etc/default/grub /etc/default/grub.bak.$(date +%Y%m%d_%H%M%S)
 
 # Enable os-prober
-sudo op-prober
 GRUB_CONFIG="/etc/default/grub"
 if ! grep -q '^GRUB_DISABLE_OS_PROBER=false' "$GRUB_CONFIG"; then
   echo "Enabling os-prober..."
   sed -i '/^#*GRUB_DISABLE_OS_PROBER=/d' "$GRUB_CONFIG"
   echo 'GRUB_DISABLE_OS_PROBER=false' >> "$GRUB_CONFIG"
 fi
+
+# Run os-prober to detect other OS
+echo "Running os-prober..."
+os-prober
 
 # Generate grub config
 echo "Updating GRUB..."
