@@ -19,7 +19,7 @@ read -p "Select theme (1-${#themes[@]}): " choice
 selected="${themes[$((choice - 1))]}"
 
 # Backup grub config
-cp /etc/default/grub /etc/default/grub.bak
+cp /etc/default/grub /etc/default/grub.bak.$(date +%Y%m%d_%H%M%S)
 
 # Install theme
 mkdir -p /boot/grub/themes
