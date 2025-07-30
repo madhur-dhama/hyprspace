@@ -12,9 +12,10 @@ if ! pacman -Qs os-prober &>/dev/null; then
 fi
 
 # Backup grub config
-cp /etc/default/grub /etc/default/grub.bak 2>/dev/null || true
+cp /etc/default/grub /etc/default/grub.bak.$(date +%Y%m%d_%H%M%S)
 
 # Enable os-prober
+sudo op-prober
 GRUB_CONFIG="/etc/default/grub"
 if ! grep -q '^GRUB_DISABLE_OS_PROBER=false' "$GRUB_CONFIG"; then
   echo "Enabling os-prober..."
