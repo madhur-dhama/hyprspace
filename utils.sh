@@ -2,12 +2,12 @@
 
 # Function to check if a package is installed
 is_installed() {
-  pacman -Qi "$1" &> /dev/null
+  paru -Qi "$1" &> /dev/null
 }
 
 # Function to check if a package is installed
 is_group_installed() {
-  pacman -Qg "$1" &> /dev/null
+  paru -Qg "$1" &> /dev/null
 }
 
 # Function to install packages if not already installed
