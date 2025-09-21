@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sudo pacman -S --noconfirm --needed tmux skim
+
+rm -rf ~/tmp
+git clone https://github.com/madhur-dhama/hyprspace ~/tmp
+
+cp -a ~/tmp/config/.  ~/.config/
+
+BIND_LINE='bind -x '"'"'"\C-f":"$HOME/.config/scripts/tmux-sessionizer"'"'"
+if ! grep -Fxq "$BIND_LINE" ~/.bashrc; then
+    echo "$BIND_LINE" >> ~/.bashrc
+fi
+
+rm -rf ~/tmp
