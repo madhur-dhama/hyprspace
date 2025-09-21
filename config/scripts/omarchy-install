@@ -35,7 +35,7 @@ if [[ $OMARCHY_REF != "master" ]]; then
   cd -
 fi
 
-rm -f ~/.local/share/omarchy/install/config/hardware/nvidia.sh
+echo "" > ~/.local/share/omarchy/install/config/hardware/nvidia.sh
 export OMARCHY_USER_NAME="madhur-dhama"
 export OMARCHY_USER_EMAIL="madhurdhama@gmail.com"
 
