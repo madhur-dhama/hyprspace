@@ -36,6 +36,8 @@ if [[ $OMARCHY_REF != "master" ]]; then
 fi
 
 rm -f ~/.local/share/omarchy/install/config/hardware/nvidia.sh
+export OMARCHY_USER_NAME="madhur-dhama"
+export OMARCHY_USER_EMAIL="madhurdhama@gmail.com"
 
 echo -e "\nInstallation starting..."
 source ~/.local/share/omarchy/install.sh
