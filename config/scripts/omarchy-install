@@ -35,7 +35,7 @@ if [[ $OMARCHY_REF != "master" ]]; then
   cd -
 fi
 
-echo "" > ~/.local/share/omarchy/install/config/hardware/nvidia.sh
+echo "# Skipped Nvidia drivers for long battery backup" > ~/.local/share/omarchy/install/config/hardware/nvidia.sh
 export OMARCHY_USER_NAME="madhur-dhama"
 export OMARCHY_USER_EMAIL="madhurdhama@gmail.com"
 
